@@ -18,8 +18,11 @@ jobs:
       - run: mkdir -p artifacts
       - run: npm pack --pack-destination artifacts
       - run: npm install --global --prefix .package-test ./artifacts/*.tgz --ignore-scripts --no-audit --no-fund
-      - run: node scripts/package-smoke.js .package-test/node_modules/agentbuster/bin/agentbuster.js .package-test/workspace
+      - run: |
+          package_root=$(npm root --global --prefix .package-test)
+          node scripts/package-smoke.js "$package_root/agentbuster/bin/agentbuster.js" .package-test/workspace
       - uses: actions/upload-artifact@v4
         with:
           name: agentbuster-npm-package
           path: artifacts/*.tgz
+
