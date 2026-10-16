@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible failure with your installation or agent integration.
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Describe expected and observed behavior. Remove private data and credentials.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction steps
+      description: Include command/UI choices, scenario IDs and minimal fake fixtures when possible.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment
+      description: OS, Node version, AgentBuster version, CLI and model versions, demo or live mode.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Redacted evidence
+      description: Attach only reviewed report excerpts. Do not post real API keys or private traces.

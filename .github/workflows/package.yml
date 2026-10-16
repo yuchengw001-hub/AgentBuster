@@ -1,0 +1,25 @@
+name: Build release package
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run check:release
+      - run: mkdir -p artifacts
+      - run: npm pack --pack-destination artifacts
+      - run: npm install --global --prefix .package-test ./artifacts/*.tgz --ignore-scripts --no-audit --no-fund
+      - run: node scripts/package-smoke.js .package-test/node_modules/agentbuster/bin/agentbuster.js .package-test/workspace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agentbuster-npm-package
+          path: artifacts/*.tgz

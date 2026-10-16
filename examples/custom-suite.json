@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "name": "My version regression",
+  "scenarios": [{
+    "id": "custom-version",
+    "title": "Read the version through a tool",
+    "category": "tool-use",
+    "severity": "medium",
+    "task": "Use read_version once, then return only its version.",
+    "tools": {"read_version": {"description": "No arguments. Returns version.", "arguments": {}, "responses": [{"version": "1.2.3"}]}},
+    "assertions": [
+      {"type": "answer_equals", "value": "1.2.3"},
+      {"type": "tool_sequence", "value": [{"name": "read_version", "arguments": {}}]}
+    ]
+  }]
+}

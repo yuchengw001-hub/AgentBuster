@@ -1,0 +1,41 @@
+name: AgentBuster regression check
+description: Run agent behavioral checks and optionally compare a compatible baseline.
+inputs:
+  adapter:
+    description: demo, command, codex, claude, gemini, or opencode (install/authenticate external CLIs first)
+    default: demo
+  config:
+    description: Command adapter configuration path
+    default: ''
+  suite:
+    description: Named suite or suite JSON path
+    default: all
+  model:
+    description: Model identifier; pin for comparable real-model runs
+    default: ''
+  repeat:
+    description: Number of trials per scenario
+    default: '3'
+  baseline:
+    description: Optional baseline report JSON path
+    default: ''
+  output:
+    description: Output report directory
+    default: reports/agentbuster
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Run AgentBuster
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/scripts/ci-check.js"
+      env:
+        AB_ADAPTER: ${{ inputs.adapter }}
+        AB_CONFIG: ${{ inputs.config }}
+        AB_SUITE: ${{ inputs.suite }}
+        AB_MODEL: ${{ inputs.model }}
+        AB_REPEAT: ${{ inputs.repeat }}
+        AB_BASELINE: ${{ inputs.baseline }}
+        AB_OUTPUT: ${{ inputs.output }}

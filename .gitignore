@@ -1,0 +1,8 @@
+node_modules/
+reports/
+*.tgz
+.agentbuster-*/
+.env
+.env.*
+local-adapter.json
+.package-test/
