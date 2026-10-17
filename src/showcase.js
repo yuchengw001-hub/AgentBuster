@@ -49,7 +49,7 @@ export async function runShowcase(outputDir, { signal } = {}) {
       const assertions = evaluate(scenario, answer, trace);
       results.push({ id: scenario.id, title: scenario.title, category: scenario.category, severity: scenario.severity, trial: 1, status: error ? 'error' : assertions.every(a => a.passed) ? 'pass' : 'fail', answer, error, assertions, trace, durationMs: Date.now() - started });
     }
-    const report = { schemaVersion: 1, toolVersion: '0.1.0', demo: true, demoKind: 'scripted-mcp', adapter: 'scripted-mcp-client', model: 'deterministic-example (no LLM)', repeats: 1,
+    const report = { schemaVersion: 1, toolVersion: '0.1.1', demo: true, demoKind: 'scripted-mcp', adapter: 'scripted-mcp-client', model: 'deterministic-example (no LLM)', repeats: 1,
       scope: 'Deterministic example clients using real MCP stdio traffic; not a live LLM evaluation',
       suite: { name: 'MCP failure-and-fix case study', fingerprint: createHash('sha256').update(JSON.stringify(cases)).digest('hex'), available: 2, selected: 2, ids: cases.map(c => c.id) },
       limits: { timeoutMs: 5000, maxSteps: 8 }, startedAt, finishedAt: new Date().toISOString(), ...summarize(results), results };

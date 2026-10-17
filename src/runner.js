@@ -80,7 +80,7 @@ export async function runSuite(suite, selected, adapter, options = {}, onResult 
     results.push(result); onResult(result);
   }
   return {
-    schemaVersion: 1, toolVersion: '0.1.0', scope: 'simulated-tool behavioral checks; not native tool interception or security certification',
+    schemaVersion: 1, toolVersion: '0.1.1', scope: 'simulated-tool behavioral checks; not native tool interception or security certification',
     demo: adapter.demo, adapter: adapter.name, model: adapter.model, repeats, cancelled: !!options.signal?.aborted,
     suite: { name: suite.name, fingerprint: suite.fingerprint, available: suite.scenarios.length, selected: selected.length, ids: selected.map(s => s.id) },
     limits: { timeoutMs: options.timeoutMs || 60000, maxSteps: options.maxSteps || 8 },

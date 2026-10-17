@@ -35,7 +35,7 @@ agentbuster ui
 For a downloaded npm tarball from a maintainer release:
 
 ```sh
-npm install -g ./agentbuster-0.1.0.tgz
+npm install -g ./agentbuster-0.1.1.tgz
 agentbuster ui
 ```
 

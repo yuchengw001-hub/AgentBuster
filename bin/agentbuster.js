@@ -96,7 +96,7 @@ const presets = {
 async function main() {
   const { command, options: o } = parse(process.argv.slice(2));
   if (command === 'help') { console.log(help); return 0; }
-  if (command === 'version') { console.log('0.1.0'); return 0; }
+  if (command === 'version') { console.log('0.1.1'); return 0; }
   if (command === 'ui') {
     const app = await serveUi({ port: numeric(o.port, 4317, 'port', 1, 65535), outputDir: o.output ? path.resolve(o.output) : undefined });
     const stop = () => { void app.stop(); };

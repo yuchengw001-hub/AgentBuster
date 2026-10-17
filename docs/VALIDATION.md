@@ -13,9 +13,15 @@ The source correction separates initialization and tool deadlines, cleans up a
 failed test handshake, bounds client shutdown and terminates stubborn process
 trees. Regression checks cover slow startup, a failed handshake whose process
 must be gone, and a process tree holding inherited pipes open. Windows CI repeats
-the lifecycle suite twice after the full suite. Individual tests and CI steps/jobs
+the lifecycle suite twice after the full suite in the initial correction. Individual tests and CI steps/jobs
 have explicit limits. Consult Actions for hosted results for the corrected commit;
 the v0.1.0 release tag does not contain this correction.
+
+For v0.1.1, CI requires 20 lifecycle rounds on Windows Node 22 and 24 and an
+actual pack/install/console/MCP check on all six OS/Node combinations. Release
+publication depends on all jobs succeeding. Validation records identify the exact
+commit/run and package SHA-256; they are attached alongside the tested tarball.
+This covers the offline suite and package lifecycle, not all live-agent testing.
 
 ## Original MVP local validation — 2026-10-16
 

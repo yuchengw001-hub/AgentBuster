@@ -1,6 +1,6 @@
 {
   "name": "agentbuster",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Break your AI Agent before your users do. Local behavioral reliability and security checks.",
   "repository": { "type": "git", "url": "https://github.com/yuchengw001-hub/AgentBuster.git" },
   "homepage": "https://github.com/yuchengw001-hub/AgentBuster#readme",
@@ -12,6 +12,8 @@
   "files": ["bin", "src", "ui", "scenarios", "examples", "docs", "scripts/preview.js", "scripts/ci-check.js", "Start-AgentBuster.cmd", "action.yml", "README.md", "README.zh-CN.md", "CHANGELOG.md", "LICENSE", "SECURITY.md", "CONTRIBUTING.md"],
   "scripts": {
     "test": "node --test --test-timeout=30000",
+    "test:stability": "node scripts/stability.js 20",
+    "verify:package": "node scripts/verify-package.js",
     "check:release": "node scripts/release-check.js",
     "demo": "node bin/agentbuster.js test --adapter demo --output reports/demo",
     "start": "node bin/agentbuster.js ui",

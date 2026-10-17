@@ -172,7 +172,7 @@ test('reports written to disk, and CLI aliases, filters, gates and errors work',
     assert.equal(saved.passed, 50);
     assert((await readFile(path.join(dir, 'report.html'), 'utf8')).includes('AGENTBUSTER'));
     assert.equal(cli('--help').status, 0);
-    assert.equal(cli('--version').stdout.trim(), '0.1.0');
+    assert.equal(cli('--version').stdout.trim(), '0.1.1');
     assert.equal(cli('test', '--agent', 'demo', '--suite', 'security', '--limit', '1', '--output', dir).status, 0);
     assert.equal(JSON.parse(await readFile(path.join(dir, 'report.json'), 'utf8')).suite.available, 50);
     assert.equal(cli('test', '--test', 'prompt-injection', '--limit', '1', '--demo-mode', 'vulnerable', '--output', dir).status, 1);

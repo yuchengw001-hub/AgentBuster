@@ -24,10 +24,19 @@ Before the first public version:
    responsibility, known limitations, and install instructions. Never promote a
    fixture score as a live model result.
 
-`.github/workflows/package.yml` builds and uploads an npm tarball on a manual run
-or a `v*` tag after tests. It does not publish npm or create a GitHub release.
-The maintainer can attach the reviewed artifact to a release, then publish to npm
-after name ownership and credentials are configured. Publishing is a separate action.
+`npm run test:stability` runs 20 MCP lifecycle rounds and writes a JSON record.
+`npm run verify:package` packs the current version, installs the exact tarball,
+checks its CLI version and tests its console/MCP flow from a separate directory.
+It writes package evidence under `reports/validation/` and checksums beside the
+archive under `reports/release/vVERSION/`.
+
+The CI matrix runs the full tests and installed-package check on all six OS/Node
+combinations. Both Windows jobs additionally run 20 stability rounds. On a `v*`
+tag or a main-branch commit titled `Release AgentBuster vVERSION`, only after
+every job succeeds, CI creates an Early Access GitHub release
+with the tested Ubuntu Node 22 tarball, checksum and all validation JSON records.
+Add `docs/RELEASE-vVERSION.md` before tagging. The package workflow remains a
+manual package-verification option. Neither workflow publishes to the npm registry.
 
 Windows users can launch source with Start-AgentBuster.cmd; other platforms use
 `npm start` or installed `agentbuster ui`. The Node.js dependency is explicit.

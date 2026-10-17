@@ -19,7 +19,7 @@ for (const file of files) {
     try { await access(resolved); } catch { problems.push(`Broken local documentation link: ${file} -> ${target}`); }
   }
 }
-for (const required of ['README.md', 'README.zh-CN.md', 'LICENSE', 'SECURITY.md', 'CHANGELOG.md', 'ui/index.html', 'docs/QUICKSTART.md', 'docs/RELEASE-v0.1.0.md']) if (!files.includes(required)) problems.push(`Missing release file: ${required}`);
+for (const required of ['README.md', 'README.zh-CN.md', 'LICENSE', 'SECURITY.md', 'CHANGELOG.md', 'ui/index.html', 'docs/QUICKSTART.md', 'docs/RELEASE-v0.1.1.md']) if (!files.includes(required)) problems.push(`Missing release file: ${required}`);
 const pkg = JSON.parse(await readFile('package.json', 'utf8'));
 if (pkg.dependencies && Object.keys(pkg.dependencies).length) problems.push('Review added runtime dependencies before release');
 if (problems.length) { for (const problem of problems) console.error(problem); process.exitCode = 1; }

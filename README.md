@@ -7,7 +7,7 @@ A local, open-source testing tool for AI agents: exercise tool-use behavior, inj
 [![CI](https://github.com/yuchengw001-hub/AgentBuster/actions/workflows/ci.yml/badge.svg)](https://github.com/yuchengw001-hub/AgentBuster/actions/workflows/ci.yml)
 [简体中文](README.zh-CN.md) · [Quickstart](docs/QUICKSTART.md) · [MCP guide](docs/MCP.md) · [CI & regressions](docs/REGRESSIONS.md)
 
-> **v0.1.0 Early Access.** The local console, offline suite, MCP case study and package installation have local validation. Coding-CLI adapters are experimental; authenticated compatibility has not been verified for every provider/platform. See [validation](docs/VALIDATION.md).
+> **v0.1.1 Early Access.** The local console, offline suite, MCP case study and package installation have local validation. Coding-CLI adapters are experimental; authenticated compatibility has not been verified for every provider/platform. See [validation](docs/VALIDATION.md).
 
 ![AgentBuster interactive console](docs/assets/console-en.png)
 
@@ -42,7 +42,7 @@ agentbuster ui
 agentbuster --help
 ```
 
-A release tarball can be installed with `npm install -g ./agentbuster-0.1.0.tgz`. **The npm registry package has not been published as part of this release**; do not assume `npx agentbuster` installs this project. Source ZIP downloads also work with `npm start`.
+A release tarball can be installed with `npm install -g ./agentbuster-0.1.1.tgz`. **The npm registry package has not been published as part of this release**; do not assume `npx agentbuster` installs this project. Source ZIP downloads also work with `npm start`.
 
 ## What can I use it for?
 
@@ -120,7 +120,7 @@ npm pack --dry-run
 
 CI is configured for Node 22/24 on Windows, Linux and macOS. Check the actual Actions results for hosted validation. Release builds also install the tarball and run a console/MCP smoke check from a separate working directory.
 
-We welcome reproducible failure cases, provider compatibility reports and onboarding feedback. See [CONTRIBUTING](CONTRIBUTING.md), [CHANGELOG](CHANGELOG.md), [release notes](docs/RELEASE-v0.1.0.md), and [issues](https://github.com/yuchengw001-hub/AgentBuster/issues/new/choose).
+We welcome reproducible failure cases, provider compatibility reports and onboarding feedback. See [CONTRIBUTING](CONTRIBUTING.md), [CHANGELOG](CHANGELOG.md), [release notes](docs/RELEASE-v0.1.1.md), and [issues](https://github.com/yuchengw001-hub/AgentBuster/issues/new/choose).
 
 Next: authenticated live-provider validation, richer real task fixtures, resolved model/version metadata, statistical comparisons and Streamable HTTP support.
 

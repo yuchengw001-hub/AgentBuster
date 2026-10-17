@@ -1,15 +1,17 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 — 2026-10-17 · Early Access
 
 - Separate MCP initialization/startup deadlines from short tool-call deadlines.
 - Clean up the test client on a failed initialization; bound client shutdown and
   terminate stubborn process trees on Windows and POSIX hosts.
 - Add slow-start, failed-handshake cleanup and inherited-pipe regression tests.
-- Bound individual tests to 30 seconds and CI jobs to 10 minutes; repeat MCP
-  lifecycle checks on both Windows Node versions without cancelling other jobs.
+- Bound individual tests to 30 seconds and CI jobs to 15 minutes; run 20 MCP
+  lifecycle rounds on both Windows Node versions without cancelling other jobs.
+- Pack, install and smoke-test the versioned tarball in every OS/Node matrix job.
+  Attach checksums and machine-readable validation records to tagged releases.
 
-The v0.1.0 tag predates these fixes. Use the current source for this correction.
+The v0.1.0 tag predates these fixes. Upgrade to v0.1.1.
 
 ## 0.1.0 — 2026-10-16 · Early Access
 
