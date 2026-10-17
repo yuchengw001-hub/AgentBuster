@@ -125,3 +125,12 @@ We welcome reproducible failure cases, provider compatibility reports and onboar
 Next: authenticated live-provider validation, richer real task fixtures, resolved model/version metadata, statistical comparisons and Streamable HTTP support.
 
 **MIT licensed.** Runs on the developer's own machine. The local console listens on loopback; it is not a public hosted app or an OS sandbox.
+
+## Official source, attribution and independent builds
+
+- Official repository: [yuchengw001-hub/AgentBuster](https://github.com/yuchengw001-hub/AgentBuster), maintained by [@yuchengw001-hub](https://github.com/yuchengw001-hub).
+- Official release entry point: [GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases). Check that repository before trusting a similarly named download or registry package.
+- [MIT](LICENSE) permits commercial use, modification, forks and redistribution. Include its copyright and permission notice in all copies or substantial portions of the software. Public promotional credit is welcome, but is not an additional MIT requirement.
+- Clearly identify independent builds and their publisher; do not imply an official release or endorsement. Truthful statements of compatibility or derivation are welcome.
+
+See [source and attribution guidance (English / 简体中文)](docs/ATTRIBUTION.md). This guidance does not replace MIT, add software-license restrictions or withdraw earlier grants.

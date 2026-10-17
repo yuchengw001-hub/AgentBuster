@@ -15,3 +15,9 @@ explaining why the simpler local design cannot handle the requirement.
 To prepare a release, run tests, `npm pack --dry-run`, inspect package contents,
 and verify source install on Windows/Linux. Repository/npm name ownership and
 registry publication must be handled by the maintainer; they are not assumed.
+
+Keep existing copyright and license notices when contributing. Identify the
+source and applicable license of any third-party code or assets you add; flag
+uncertain provenance for review rather than replacing its notices. Maintainer
+status or a commit record does not establish ownership of every contribution.
+See [source and attribution guidance](docs/ATTRIBUTION.md).

@@ -52,7 +52,7 @@ Windows 源码下载用户也可以双击 `Start-AgentBuster.cmd` 启动。
 
 CLI 中的 `agentbuster test` 默认执行 50 个场景的离线演示，不需要账号或 API Key。
 **演示使用预录制决策，100 分不代表任何真实 Agent 的成绩。**
-本次只提供源码安装，尚未发布 npm 包。
+可从官方仓库下载源码，或从 [GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases) 下载发行页提供的 tarball 后安装；尚未发布 npm registry 包，不应仅凭同名包判断来源。
 
 无需账号即可运行真实 MCP 传输案例：
 
@@ -183,3 +183,12 @@ npm pack --dry-run
 
 MIT 开源。AgentBuster 不采集遥测；外部 CLI 使用其自身的配置和服务。
 报告已对测试金丝雀和常见密钥模式做尽力脱敏，分享前仍需检查内容。
+
+## 官方来源、署名与独立版本
+
+- 官方仓库：[yuchengw001-hub/AgentBuster](https://github.com/yuchengw001-hub/AgentBuster)，维护者账号：[@yuchengw001-hub](https://github.com/yuchengw001-hub)。
+- 官方发布入口：[GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases)。下载同名软件或 registry 包前，请先回到该仓库核对来源。
+- [MIT](LICENSE) 允许商业使用、修改、fork 和再分发；软件的所有副本或实质性部分须包含其版权声明与许可声明。欢迎公开宣传时注明来源，但这不是 MIT 的额外强制要求。
+- 独立版本应清楚说明发布者与独立身份，不得误导为官方发布或获得官方背书；欢迎真实说明兼容性与衍生关系。
+
+详见[来源与署名说明（English / 简体中文）](docs/ATTRIBUTION.md)。该说明不替换 MIT、不增加软件许可限制，也不撤回既有授权。
