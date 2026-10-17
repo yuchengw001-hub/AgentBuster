@@ -78,7 +78,7 @@ sandbox; OpenCode denies tools through invocation configuration. These are initi
 CLI integrations, not a cross-platform sandbox implementation. Adapter errors
 must never produce a passing score.
 
-## Reports and open source
+## Reports and licensing
 
 Always emit JSON, Markdown, standalone HTML, and SVG badge. HTML escapes all
 untrusted content, has no external dependencies, includes trace details,
@@ -86,11 +86,16 @@ category scores, coverage and scope. DEMO badges must be visibly marked.
 The language selector uses a small static inline script authorized by an exact
 CSP hash; model output is escaped and never interpolated into executable code.
 
-English landing README plus Chinese guide, MIT license, contribution and security
+Historical v0.1.x release design used an English landing README, Chinese guide,
+MIT license, contribution and security
 guidance, examples, native Node tests and Windows/Linux CI. Prioritize a useful
 30-second demo and easy contribution of regression cases. Future work: live MCP
 fault injection, native event normalization, repeated statistical trials, and
 container isolation. No leaderboard or hosted platform in this release.
+
+Source LICENSE 1.0 was published on 2026-10-17: see [LICENSE](../LICENSE)
+and [migration/scope](../LICENSE-MIGRATION.md). The historical MIT statement above
+does not offer MIT as an alternative for material covered by the new license.
 
 ## Adapter sources
 

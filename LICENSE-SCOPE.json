@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "project": "AgentBuster",
+  "status": "source-published",
+  "licenseVersion": "1.0",
+  "projectLicense": "Source-Available Free Attribution and Restricted Paid Use License 1.0 (custom; not an SPDX identifier)",
+  "contentAndFeeBoundariesApproved": true,
+  "licensorPublicId": "yuchengw001-hub",
+  "authorityBasis": "User explicitly states independent development; applies to original portions the licensor is entitled to license. This is not a complete legal title audit.",
+  "rightsAuditComplete": false,
+  "publicationAuthorized": true,
+  "officialPublicationDate": "2026-10-17",
+  "publishedSoftwareVersion": "source commit; no new installer/package version",
+  "effectivenessRule": "LICENSE 1.0 applies on the 2026-10-17 source publication commit to licensor-owned covered portions; historical and actual third-party rights are preserved.",
+  "baselineCommit": "dd34032ad4be452ba4348479d8983165147e2dcc",
+  "originalCopyrightNotice": "Copyright (c) 2026 AgentBuster contributors",
+  "coveredMaterial": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": ".github/workflows/package.yml",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": ".gitignore",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "LICENSE",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "LICENSE-MIGRATION.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "LICENSE-SCOPE.json",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "README.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "SECURITY.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "Start-AgentBuster.cmd",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "action.yml",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "bin/agentbuster.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/ADAPTERS.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/ATTRIBUTION.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/DESIGN.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/LAUNCH.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/MCP.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/QUICKSTART.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/REGRESSIONS.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/RELEASE-v0.1.0.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/RELEASE-v0.1.1.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/RELEASING.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/SCENARIOS.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "examples/command-agent.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "examples/custom-suite.json",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "examples/demo-plans.json",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "examples/mcp-server.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "package.json",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scenarios/default.json",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/build-fixtures.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/ci-check.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/package-smoke.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/preview.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/release-check.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/stability.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "scripts/verify-package.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/adapters.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/evaluator.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/history.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/locales.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/mcp-client.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/mcp.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/process.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/reporters.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/runner.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/scenario-locales.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/setup.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/showcase.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/suite.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "src/ui-server.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "test/agentbuster.test.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "test/launch.test.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "test/ui.test.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "ui/app.css",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "ui/app.js",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    },
+    {
+      "path": "ui/index.html",
+      "scope": "Only the original portions the licensor is entitled to license; historical and actual third-party rights preserved"
+    }
+  ],
+  "excludedOrSeparatelyGoverned": [
+    {
+      "path": "docs/assets/console-en.png",
+      "reason": "Screenshot/material origin not verified; no independent ownership assertion or relicensing of unknown third-party rights"
+    },
+    {
+      "path": "docs/assets/report-en.png",
+      "reason": "Screenshot/material origin not verified; no independent ownership assertion or relicensing of unknown third-party rights"
+    },
+    {
+      "path": "licenses/HISTORICAL-MIT.txt",
+      "reason": "Historical license text/notice record; not a new project-license option"
+    }
+  ],
+  "thirdPartyExceptions": "THIRD-PARTY-NOTICES.md",
+  "historicalLicenseRecord": "licenses/HISTORICAL-MIT.txt",
+  "note": "A new-code requirement is not imposed. No substantive program code was added in this licensing task. Historical MIT grants survive; this is not a current MIT OR custom offer.",
+  "publicationType": "source-license-commit",
+  "sourcePublicationCommit": "The repository commit containing this file; see commit history",
+  "preparedFromDocumentationCommit": "a9bafe842f4b4d9b12acc1b7d839546638678b64"
+}

@@ -1,8 +1,10 @@
 # AgentBuster
 
+> **源码许可 1.0，2026-10-17 发布。** 本源码提交采用限制性源码可见 [LICENSE](LICENSE)，不是 MIT/GPL/AGPL 或 OSI 开源许可；不发布新的安装包版本。覆盖许可人原创且有权许可部分，历史及第三方权利保留。见[迁移与范围](LICENSE-MIGRATION.md)。
+
 **Break your AI Agent before your users do.**
 
-开源 AI Agent 安全与可靠性自动化测试工具。
+AI Agent 安全与可靠性自动化测试工具（源码许可 1.0）。
 在用户搞崩你的 Agent 之前，先帮你把它搞崩。
 
 [English](README.md) · [首次使用](docs/QUICKSTART.md) · [更新记录](CHANGELOG.md)
@@ -52,7 +54,7 @@ Windows 源码下载用户也可以双击 `Start-AgentBuster.cmd` 启动。
 
 CLI 中的 `agentbuster test` 默认执行 50 个场景的离线演示，不需要账号或 API Key。
 **演示使用预录制决策，100 分不代表任何真实 Agent 的成绩。**
-本次只提供源码安装，尚未发布 npm 包。
+可从官方仓库下载源码，或从 [GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases) 下载发行页提供的 tarball 后安装；尚未发布 npm registry 包，不应仅凭同名包判断来源。
 
 无需账号即可运行真实 MCP 传输案例：
 
@@ -181,5 +183,15 @@ npm pack --dry-run
 见 [产品与技术设计](docs/DESIGN.md)、[新增场景](docs/SCENARIOS.md)、
 [适配器开发](docs/ADAPTERS.md)、[贡献指南](CONTRIBUTING.md)。
 
-MIT 开源。AgentBuster 不采集遥测；外部 CLI 使用其自身的配置和服务。
+AgentBuster 不采集遥测；外部 CLI 使用其自身的配置和服务。
 报告已对测试金丝雀和常见密钥模式做尽力脱敏，分享前仍需检查内容。
+
+## 许可 1.0、官方来源与修改版
+
+允许个人和公司内部自用、修改；允许注明原作者、原项目链接、保留通知并说明修改情况后免费发布原版或修改版；禁止出售软件、修改版、激活码及提供收费在线服务；收费安装、部署、维护和相应技术支持须事先取得许可人书面授权。不限制用软件完成自己的工作或出售不包含软件受许可内容的工作成果，不强制公开修改源码。禁止冒充整体原创或官方，允许对新增部分真实署名。
+
+许可人公开标识：yuchengw001-hub。完整条文见 [LICENSE](LICENSE)，具体路径及排除项见 [LICENSE-SCOPE.json](LICENSE-SCOPE.json)，历史与第三方边界见 [迁移说明](LICENSE-MIGRATION.md)及[第三方说明](THIRD-PARTY-NOTICES.md)。本许可于 2026-10-17 随源码提交发布，不发布新的安装包版本。
+
+- 官方仓库：[AgentBuster](https://github.com/yuchengw001-hub/AgentBuster)；官方发行入口：[GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases)，仅实际发布记录代表相应官方版本。
+- 原作者/版权标识：`Copyright (c) 2026 AgentBuster contributors`；修改版署名示例见 [ATTRIBUTION](docs/ATTRIBUTION.md)。
+- 不提供全项目 MIT 任选许可，也不撤回旧 MIT 来源的既有权利。允许更换后续发布许可，不以新写代码为前提；历史副本合规销售不因新许可被禁止。

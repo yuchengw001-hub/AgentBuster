@@ -8,8 +8,9 @@
   "type": "module",
   "bin": { "agentbuster": "bin/agentbuster.js" },
   "engines": { "node": ">=22" },
-  "license": "MIT",
-  "files": ["bin", "src", "ui", "scenarios", "examples", "docs", "scripts/preview.js", "scripts/ci-check.js", "Start-AgentBuster.cmd", "action.yml", "README.md", "README.zh-CN.md", "CHANGELOG.md", "LICENSE", "SECURITY.md", "CONTRIBUTING.md"],
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
+  "files": ["bin", "src", "ui", "scenarios", "examples", "docs", "scripts/preview.js", "scripts/ci-check.js", "Start-AgentBuster.cmd", "action.yml", "README.md", "README.zh-CN.md", "CHANGELOG.md", "LICENSE", "LICENSE-SCOPE.json", "LICENSE-MIGRATION.md", "THIRD-PARTY-NOTICES.md", "licenses", "SECURITY.md", "CONTRIBUTING.md"],
   "scripts": {
     "test": "node --test --test-timeout=30000",
     "test:stability": "node scripts/stability.js 20",

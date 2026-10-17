@@ -1,8 +1,10 @@
 # AgentBuster
 
+> **Source license 1.0 — published 2026-10-17.** This source commit adopts the custom source-available [LICENSE](LICENSE), not MIT/GPL/AGPL or OSI open source. No new installer/package version is released. Coverage is limited to licensor-owned portions, preserving historical and third-party rights. See [migration/scope](LICENSE-MIGRATION.md).
+
 **Break your AI Agent before your users do.**
 
-A local, open-source testing tool for AI agents: exercise tool-use behavior, inject controlled MCP failures, inspect evidence, and catch regressions before shipping.
+A local testing tool for AI agents: exercise tool-use behavior, inject controlled MCP failures, inspect evidence, and catch regressions before shipping.
 
 [![CI](https://github.com/yuchengw001-hub/AgentBuster/actions/workflows/ci.yml/badge.svg)](https://github.com/yuchengw001-hub/AgentBuster/actions/workflows/ci.yml)
 [简体中文](README.zh-CN.md) · [Quickstart](docs/QUICKSTART.md) · [MCP guide](docs/MCP.md) · [CI & regressions](docs/REGRESSIONS.md)
@@ -124,4 +126,12 @@ We welcome reproducible failure cases, provider compatibility reports and onboar
 
 Next: authenticated live-provider validation, richer real task fixtures, resolved model/version metadata, statistical comparisons and Streamable HTTP support.
 
-**MIT licensed.** Runs on the developer's own machine. The local console listens on loopback; it is not a public hosted app or an OS sandbox.
+## License 1.0, official source and derivatives
+
+Personal and internal company use and modification are allowed. Free redistribution of original or modified copies requires original-author credit, the upstream link, retained notices and change descriptions. Selling software, modified copies or activation codes and providing paid online services are prohibited under this license. Paid installation, deployment, maintenance and corresponding support require prior written authorization. Users may do their own work and sell results containing no licensed software content; private modifications need not be disclosed. Do not misrepresent upstream work as entirely original or official; truthful credit for additions is allowed.
+
+Public licensor ID: yuchengw001-hub. Read [LICENSE](LICENSE), [scope/exclusions](LICENSE-SCOPE.json), [migration](LICENSE-MIGRATION.md) and [third-party notices](THIRD-PARTY-NOTICES.md). LICENSE 1.0 is published with this source commit on 2026-10-17; no new installer/package version is released.
+
+- Official source: [AgentBuster](https://github.com/yuchengw001-hub/AgentBuster); version entry point: [GitHub Releases](https://github.com/yuchengw001-hub/AgentBuster/releases), for releases actually listed.
+- Original copyright/author identifier: `Copyright (c) 2026 AgentBuster contributors`; derivative examples: [ATTRIBUTION](docs/ATTRIBUTION.md).
+- This is not an MIT OR custom project offer. Historic MIT grants remain intact; changing future releases does not require new code, and cannot withdraw lawful sale rights from the old MIT source.
