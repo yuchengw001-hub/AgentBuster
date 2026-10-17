@@ -61,4 +61,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="v$(node -p "require('./package.json').version")"
-          gh release create "$tag" release/* --target "$GITHUB_SHA" --prerelease --title "AgentBuster $tag — Early Access" --notes-file "docs/RELEASE-$tag.md"
+          mapfile -d '' assets < <(find release -type f -print0)
+          test "${#assets[@]}" -ge 10
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --draft --target "$GITHUB_SHA" --prerelease --title "AgentBuster $tag — Early Access" --notes-file "docs/RELEASE-$tag.md"
+          fi
+          gh release edit "$tag" --draft --target "$GITHUB_SHA" --notes-file "docs/RELEASE-$tag.md"
+          gh release upload "$tag" "${assets[@]}" --clobber
+          gh release edit "$tag" --draft=false --prerelease
