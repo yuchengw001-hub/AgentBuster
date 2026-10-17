@@ -80,6 +80,7 @@ Example config (replace executable and script paths):
 {
   "server": {"command": "node", "args": ["/absolute/path/my-mcp-server.js"]},
   "timeoutMs": 30000,
+  "startupTimeoutMs": 30000,
   "captureContent": false,
   "faults": [
     {"tool": "get_status", "action": "error", "onCalls": [1], "message": "HTTP_429: retry once"},
@@ -88,6 +89,13 @@ Example config (replace executable and script paths):
   ]
 }
 ```
+
+`timeoutMs` bounds each forwarded request (including injected delay).
+`startupTimeoutMs` separately bounds `initialize`, including server process startup;
+it defaults to the larger of `timeoutMs` and 5000ms. Both accept 10..3600000ms.
+A short tool deadline must not accidentally turn normal process startup into a
+handshake failure. Client shutdown closes stdin, then terminates a stubborn process
+tree after one second, with a three-second outer cleanup deadline.
 
 All fault rules are deterministic. Counts are per tool, per proxy session. `onCalls`
 is 1-indexed; omit it to affect every call. `tool: "*"` matches any tool. First

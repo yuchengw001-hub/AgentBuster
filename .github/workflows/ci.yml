@@ -4,7 +4,9 @@ permissions:
   contents: read
 jobs:
   offline-tests:
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: [22, 24]
@@ -15,6 +17,16 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm test
+        timeout-minutes: 3
+      - name: Repeat MCP lifecycle tests on Windows
+        if: runner.os == 'Windows'
+        timeout-minutes: 3
+        run: |
+          1..2 | ForEach-Object {
+            Write-Host "MCP stability repeat $_ of 2"
+            node --test --test-timeout=30000 test/launch.test.js
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
       - run: npm run check:release
       - run: npm run demo
       - run: node bin/agentbuster.js showcase

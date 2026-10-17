@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Separate MCP initialization/startup deadlines from short tool-call deadlines.
+- Clean up the test client on a failed initialization; bound client shutdown and
+  terminate stubborn process trees on Windows and POSIX hosts.
+- Add slow-start, failed-handshake cleanup and inherited-pipe regression tests.
+- Bound individual tests to 30 seconds and CI jobs to 10 minutes; repeat MCP
+  lifecycle checks on both Windows Node versions without cancelling other jobs.
+
+The v0.1.0 tag predates these fixes. Use the current source for this correction.
+
 ## 0.1.0 — 2026-10-16 · Early Access
 
 First public preview of AgentBuster, a local security and reliability testing tool

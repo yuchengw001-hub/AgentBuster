@@ -11,7 +11,7 @@
   "license": "MIT",
   "files": ["bin", "src", "ui", "scenarios", "examples", "docs", "scripts/preview.js", "scripts/ci-check.js", "Start-AgentBuster.cmd", "action.yml", "README.md", "README.zh-CN.md", "CHANGELOG.md", "LICENSE", "SECURITY.md", "CONTRIBUTING.md"],
   "scripts": {
-    "test": "node --test",
+    "test": "node --test --test-timeout=30000",
     "check:release": "node scripts/release-check.js",
     "demo": "node bin/agentbuster.js test --adapter demo --output reports/demo",
     "start": "node bin/agentbuster.js ui",

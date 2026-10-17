@@ -14,6 +14,7 @@ import { compareReports, replayText } from '../src/history.js';
 import { locales, languageScript } from '../src/locales.js';
 import { htmlReport } from '../src/reporters.js';
 import { createSetup } from '../src/setup.js';
+import { runProcess } from '../src/process.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const cli = (...args) => spawnSync(process.execPath, [path.join(root, 'bin/agentbuster.js'), ...args], { encoding: 'utf8', timeout: 15000 });
@@ -26,9 +27,15 @@ async function proxyClient(dir, settings) {
   const file = path.join(dir, 'proxy.json'), trace = path.join(dir, 'trace.jsonl');
   await writeFile(file, JSON.stringify(settings));
   const client = await connectStdio(process.execPath, [path.join(root, 'bin/agentbuster.js'), 'mcp', '--config', file, '--trace', trace]);
-  await client.request('initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'test', version: '1' } });
-  client.notify('notifications/initialized');
-  return { client, trace };
+  try {
+    await client.request('initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'test', version: '1' } });
+    client.notify('notifications/initialized');
+    return { client, trace };
+  } catch (error) {
+    // A failed handshake happens before the caller's finally block can run.
+    await client.close();
+    throw error;
+  }
 }
 
 test('real MCP proxy preserves handshake, tools discovery, errors and concurrent calls', () => temporary(async dir => {
@@ -67,6 +74,55 @@ test('MCP delayed calls respect deadlines without executing a late delayed reque
   assert((await readFile(trace, 'utf8')).includes('"status":"timeout"'));
 }));
 
+test('slow initialization has a separate budget while tool deadlines still apply', () => temporary(async dir => {
+  const server = path.join(dir, 'slow-start.cjs');
+  await writeFile(server, `require('node:readline').createInterface({input:process.stdin}).on('line',line=>{
+    const m=JSON.parse(line);if(!Object.hasOwn(m,'id'))return;
+    const reply=()=>console.log(JSON.stringify({jsonrpc:'2.0',id:m.id,result:{content:[{type:'text',text:'healthy'}]}}));
+    if(m.method==='initialize')setTimeout(reply,400);else reply();
+  });`);
+  const { client, trace } = await proxyClient(dir, {
+    server: { command: process.execPath, args: [server] }, timeoutMs: 100,
+    faults: [{ tool: 'get_status', onCalls: [1], action: 'delay', delayMs: 500 }]
+  });
+  try {
+    await assert.rejects(client.request('tools/call', { name: 'get_status' }), /deadline/);
+    assert.equal((await client.request('tools/call', { name: 'get_status' })).content[0].text, 'healthy');
+  } finally { await client.close(); }
+  const events = (await readFile(trace, 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.equal(events.find(e => e.type === 'response' && e.method === 'initialize').status, 'ok');
+  assert.equal(events.filter(e => e.status === 'timeout').length, 1);
+}));
+
+test('failed proxy initialization cleans up the client before rejecting', () => temporary(async dir => {
+  const pidFile = path.join(dir, 'upstream.pid');
+  const script = `require('node:fs').writeFileSync(${JSON.stringify(pidFile)},String(process.pid));require('node:readline').createInterface({input:process.stdin}).on('line',()=>{});`;
+  await assert.rejects(proxyClient(dir, {
+    server: { command: process.execPath, args: ['-e', script] }, timeoutMs: 100, startupTimeoutMs: 1000, faults: []
+  }), /deadline/);
+  const pid = Number(await readFile(pidFile, 'utf8'));
+  assert.throws(() => process.kill(pid, 0), { code: 'ESRCH' });
+}));
+
+test('client close terminates a stubborn process tree and inherited pipes', () => temporary(async dir => {
+  const fixture = path.join(dir, 'close-tree.mjs');
+  const moduleUrl = new URL('../src/mcp-client.js', import.meta.url).href;
+  await writeFile(fixture, `import {connectStdio} from ${JSON.stringify(moduleUrl)};
+    const script = ${JSON.stringify(`const {spawn}=require('node:child_process');const descendant=spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{stdio:'inherit',windowsHide:true});require('node:readline').createInterface({input:process.stdin}).on('line',line=>{const m=JSON.parse(line);console.log(JSON.stringify({jsonrpc:'2.0',id:m.id,result:{pid:descendant.pid}}))});setInterval(()=>{},1000);`)};
+    const client=await connectStdio(process.execPath,['-e',script]);
+    const {pid}=await client.request('initialize');
+    try {
+      await Promise.all([client.close(),client.close()]);
+      let alive=true;
+      for(let i=0;i<40;i++){try{process.kill(pid,0)}catch(e){if(e.code!=='ESRCH')throw e;alive=false;break}await new Promise(r=>setTimeout(r,25))}
+      if(alive)throw new Error('Descendant survived close');
+      console.log('tree closed');
+    } finally {try{process.kill(pid)}catch{}}
+  `);
+  const output = await runProcess(process.execPath, [fixture], { timeoutMs: 8000 });
+  assert.match(output, /tree closed/);
+}));
+
 test('captureContent requires opt-in and redacts explicit fake canaries', () => temporary(async dir => {
   const secret = 'BUSTER_TEST_PRIVATE_CANARY';
   const settings = { ...config([{ tool: 'lookup', action: 'inject', text: secret }]), captureContent: true, canaries: [secret] };
@@ -86,6 +142,7 @@ test('MCP malformed upstream is bounded and exits as error', () => temporary(asy
 }));
 
 test('MCP config rejects invalid fault definitions before spawning', () => {
+  assert.throws(() => validateProxyConfig({ ...config([]), startupTimeoutMs: -1 }));
   assert.throws(() => validateProxyConfig(config([{ tool: 'x', action: 'execute-shell' }])));
   assert.throws(() => validateProxyConfig(config([{ tool: 'x', action: 'delay', delayMs: -1 }])));
   assert.throws(() => validateProxyConfig(config([{ tool: 'x', action: 'error', onCalls: [0] }])));

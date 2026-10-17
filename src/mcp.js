@@ -30,6 +30,7 @@ export function readMessages(stream, onMessage, onError) {
 export function validateProxyConfig(config) {
   if (!config || typeof config.server?.command !== 'string' || !Array.isArray(config.server.args) || config.server.args.some(a => typeof a !== 'string') || !Array.isArray(config.faults)) throw new Error('MCP config needs server:{command,args} and faults:[]');
   if (config.timeoutMs !== undefined && (!Number.isInteger(config.timeoutMs) || config.timeoutMs < 10 || config.timeoutMs > 3600000)) throw new Error('MCP timeoutMs must be 10..3600000');
+  if (config.startupTimeoutMs !== undefined && (!Number.isInteger(config.startupTimeoutMs) || config.startupTimeoutMs < 10 || config.startupTimeoutMs > 3600000)) throw new Error('MCP startupTimeoutMs must be 10..3600000');
   if (config.captureContent !== undefined && typeof config.captureContent !== 'boolean') throw new Error('captureContent must be boolean');
   if (config.canaries !== undefined && (!Array.isArray(config.canaries) || config.canaries.some(s => typeof s !== 'string' || s.length < 8))) throw new Error('canaries must contain fake strings of at least 8 characters');
   for (const fault of config.faults) {
@@ -48,6 +49,8 @@ export async function startProxy(config, { input = process.stdin, output = proce
   const child = spawn(executable.command, [...executable.prefix, ...config.server.args], { shell: false, windowsHide: true, detached: process.platform !== 'win32', stdio: ['pipe', 'pipe', 'pipe'] });
   const pending = new Map(), upstreamIds = new Map(), counts = new Map();
   const timeoutMs = config.timeoutMs || 30000;
+  // initialize includes process/module startup; keep short tool deadlines independent.
+  const startupTimeoutMs = config.startupTimeoutMs ?? Math.max(timeoutMs, 5000);
   let ended = false, inputEnded = false, traceBytes = 0, writeChain = Promise.resolve(), closeTimer, nextId = 0;
   const sessionId = randomUUID();
   const log = event => {
@@ -117,7 +120,8 @@ export async function startProxy(config, { input = process.stdin, output = proce
     upstreamIds.set(record.upstreamId, record);
     const forwarded = { ...message, id: record.upstreamId };
     log({ type: 'request', id: message.id, method: message.method, tool, call, fault: fault?.action, ...(config.captureContent ? { message } : {}) });
-    record.timer = setTimeout(() => finish(record, { jsonrpc: '2.0', id: message.id, error: { code: -32000, message: 'AgentBuster upstream deadline exceeded' } }, 'timeout'), timeoutMs);
+    const deadline = message.method === 'initialize' ? startupTimeoutMs : timeoutMs;
+    record.timer = setTimeout(() => finish(record, { jsonrpc: '2.0', id: message.id, error: { code: -32000, message: 'AgentBuster upstream deadline exceeded' } }, 'timeout'), deadline);
     if (fault?.action === 'error') {
       finish(record, { jsonrpc: '2.0', id: message.id, result: { isError: true, content: [{ type: 'text', text: fault.message || 'AgentBuster injected transient tool failure' }] } }, 'injected-error');
     } else if (fault?.action === 'delay') {

@@ -1,4 +1,23 @@
-# MVP validation — 2026-10-16
+# Validation
+
+## Windows hang investigation — 2026-10-17
+
+CI run [38885066656](https://github.com/yuchengw001-hub/AgentBuster/actions/runs/38885066656)
+passed Linux/macOS but both Windows Node 22/24 jobs failed the delayed MCP case,
+then remained alive until cancellation about six hours later. The 100ms request
+budget also applied to server initialization. The test helper threw before
+returning the client, bypassing the caller's cleanup block and leaving a process.
+One prior green run does not establish Windows stability.
+
+The source correction separates initialization and tool deadlines, cleans up a
+failed test handshake, bounds client shutdown and terminates stubborn process
+trees. Regression checks cover slow startup, a failed handshake whose process
+must be gone, and a process tree holding inherited pipes open. Windows CI repeats
+the lifecycle suite twice after the full suite. Individual tests and CI steps/jobs
+have explicit limits. Consult Actions for hosted results for the corrected commit;
+the v0.1.0 release tag does not contain this correction.
+
+## Original MVP local validation — 2026-10-16
 
 Local environment: Windows, Node.js 24.20.0, npm 11.19.0.
 
