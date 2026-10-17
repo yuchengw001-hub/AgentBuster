@@ -61,7 +61,7 @@ existing or historical MIT grants.
 放置链接或公开修改代码。许可正文（包括免责声明）保持有效，以其正文为准。
 
 自愿公开致谢示例：“基于 AgentBuster：
-https://github.com/yuchengw001-hub/AgentBuster；由【你的名称】独立修改并分发。”
+[https://github.com/yuchengw001-hub/AgentBuster](https://github.com/yuchengw001-hub/AgentBuster)；由【你的名称】独立修改并分发。”
 此致谢不能替代许可声明。
 
 请保留其他版权主体的声明及适用的第三方许可。维护者账号说明项目维护身份，
